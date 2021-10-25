@@ -23,6 +23,7 @@ function App() {
 
   const addNewTodoToState = (todo) => {
     setTodos([...todos,todo])
+    
   }
 
   const [dizajneri, setDizajner] = useState([

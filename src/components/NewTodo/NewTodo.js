@@ -8,7 +8,7 @@ function Newtodo ({ dizajneri,history,addNewTodoToState }) {
     naslovAkcije: "",
     datumSlanja: "",
     datumPregledaAkcije: "",
-    dizajneriNaZadatku: [""],
+    dizajneriNaZadatku: "",
     završeno: false,
   });
 
@@ -36,10 +36,13 @@ function Newtodo ({ dizajneri,history,addNewTodoToState }) {
 
 
   const addNewTodo =() => {
-
-    addNewTodoToState(newTodo);
-    //history.push("/todos")
     console.log(oznaceniDizajner);
+    setNewTodo({...newTodo,dizajneriNaZadatku:oznaceniDizajner})
+    /* setNewTodo([...newTodo.dizajneriNaZadatku,oznaceniDizajner]); */
+    addNewTodoToState(newTodo);
+    console.log(newTodo);
+
+    //history.push("/todos")
   }
 
   return (
