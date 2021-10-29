@@ -6,21 +6,17 @@ const Todos = ({todos}) =>{
 
   const allTodos = todos.map((todo) => {
 
-    let dslanja = todo.datumSlanja;
-    let trenutniDan = Date.now();
-
-    const trenDan = new Date(trenutniDan).setHours(0,0,0,0);
-
-    const datumSlanjaKataloga = new Date(dslanja).getTime()/1000;
-
-    console.log("Krajnji dan "+ datumSlanjaKataloga);
-    console.log("Trenutni dan "+ trenDan);
-
 
     let dizajnerText = "Dizajner";
     if (todo.drugiDizajnerNaZadatku) {
       dizajnerText="Dizajneri";      
     }
+
+    const datumPregleda = new Date((todo.datumPregleda.seconds)*1000);
+    const prikazDatumPregleda = datumPregleda.toLocaleDateString('ba-BA');
+
+    const datum = new Date((todo.vrijeme.seconds)*1000);
+    const slanje = datum.toLocaleDateString('ba-BA');
 
 
     return (
@@ -33,15 +29,16 @@ const Todos = ({todos}) =>{
               </h4>
             </div>
             <div className="col">
-              <h4>Slanje u štampu:<br/> {todo.datumSlanja}</h4>
+              <h4>Slanje u štampu:<br/> {slanje}</h4>
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <h6 className="text-muted mb-2">Akcija pregledana:<br/> {todo.datumPregledaAkcije}</h6>
+              <h6 className="text-muted mb-2">Akcija pregledana:<br/> {prikazDatumPregleda}</h6>
             </div>
             <div className="col">
               <h6 className="text-muted mb-2">
+                
                 5 dana do slanja kataloga u štampu
               </h6>
             </div>
