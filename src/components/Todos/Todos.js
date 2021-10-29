@@ -6,14 +6,16 @@ const Todos = ({todos}) =>{
 
   const allTodos = todos.map((todo) => {
 
+    
+
     let dizajnerText = "Dizajner";
-    if (todo.dizajneriNaZadatku.length > 1) {
+    if (todo.drugiDizajnerNaZadatku) {
       dizajnerText="Dizajneri";      
     }
 
 
     return (
-      <div className="card d-flex flex-row kartica m-1">
+       <div key={todo.id} className="card flex-row kartica m-1">
         <div className="card-body">
           <div className="row">
             <div className="col">
@@ -39,12 +41,15 @@ const Todos = ({todos}) =>{
             {dizajnerText} na ovom zadatku</h4>
 
           <ul className="list-group">
-            {todo.dizajneriNaZadatku.map((dizajner) =>{
-            return(
-            <li className="list-group-item">
-            <span>{dizajner}</span>
+            <li className="list-group-item" key={todo.dizajnerNaZadatku.id}>
+            <span>{todo.dizajnerNaZadatku}</span>
             </li>
-            )})}        
+
+            {todo.drugiDizajnerNaZadatku && 
+            <li className="list-group-item">
+            <span key={todo.drugiDizajnerNaZadatku.id}>{todo.drugiDizajnerNaZadatku}</span>
+            </li>}
+                   
           </ul>
 
           <div className="row">
@@ -64,12 +69,14 @@ const Todos = ({todos}) =>{
           </div>
         </div>
       </div>
-    );
-  });
+      
+     
+      );
+      });
 
 
   return (
-    <div className="container d-flex d-lg-flex flex-row flex-grow-1 justify-content-between align-items-start flex-sm-column flex-md-column flex-lg-row flex-xl-row justify-content-xl-center align-items-xl-start">
+      <div className="container">
       {allTodos}
     </div>
   );
