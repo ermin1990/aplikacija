@@ -6,7 +6,16 @@ const Todos = ({todos}) =>{
 
   const allTodos = todos.map((todo) => {
 
-    
+    let dslanja = todo.datumSlanja;
+    let trenutniDan = Date.now();
+
+    const trenDan = new Date(trenutniDan).setHours(0,0,0,0);
+
+    const datumSlanjaKataloga = new Date(dslanja).getTime()/1000;
+
+    console.log("Krajnji dan "+ datumSlanjaKataloga);
+    console.log("Trenutni dan "+ trenDan);
+
 
     let dizajnerText = "Dizajner";
     if (todo.drugiDizajnerNaZadatku) {

@@ -3,6 +3,7 @@ import {withRouter} from "react-router-dom";
 
 function Newtodo ({ dizajneri,history,addNewTodoToState }) {
 
+  
   const [newTodo, setNewTodo] = useState({
     id: Date.now(),
     naslovAkcije: "",
