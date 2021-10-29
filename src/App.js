@@ -14,9 +14,10 @@ function App() {
     {
       id: 1,
       naslovAkcije: "Redovni Katalog Oktobar I",
-      datumSlanja: "18.10.2021. - Petak",
-      datumPregledaAkcije: "5.10.2021.",
-      dizajneriNaZadatku: ["Ermin Selimović", "Mirsad Ramić"],
+      datumSlanja: "2021-11-5",
+      datumPregledaAkcije: "2021-10-22",
+      dizajnerNaZadatku: "Ermin Selimović",
+      drugiDizajnerNaZadatku: "",
       završeno: false,
     }
   ])
