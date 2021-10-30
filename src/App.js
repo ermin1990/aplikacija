@@ -7,7 +7,7 @@ import Newtodo from "./components/NewTodo/NewTodo";
 import Todos from "./components/Todos/Todos";
 
 import { db } from './firebase-config';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, addDoc, updateDoc, doc } from 'firebase/firestore';
 
 import "./css/App.css";
 
@@ -71,15 +71,25 @@ function App() {
     };
 
     getTodos();
-  }, []);
+  },[]);
 
 
-  console.log(todos);
-
-
-  const addNewTodoToState = (todo) => {
+  const addNewTodoToState = async(todo) => {
     setTodos([...todos,todo])
-    
+    await addDoc(todosCollectionRef, todo)
+  }
+  
+  // UPDATE ZAVRSENO
+  let check;
+  const chackDone = async (id,done)=>{
+    const todoDoc = doc(db, "todos", id)
+    if(!done){
+      check = {zavrseno: true}
+      await updateDoc(todoDoc, check)
+    } else {check = {zavrseno: false}
+    await updateDoc(todoDoc, check)
+  }
+    window.location.reload('/todos')
   }
 
   return (
@@ -87,7 +97,7 @@ function App() {
       <Navbar />
       <Route path="/" exact component={Home}></Route>
       <Route path="/todos">
-        <Todos todos={todos}/>
+        <Todos todos={todos} chackDone={chackDone} />
       </Route>
       <Route path="/newtodo">
         <Newtodo dizajneri={dizajneri} addNewTodoToState={addNewTodoToState} />

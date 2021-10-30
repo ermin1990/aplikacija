@@ -5,9 +5,14 @@ import styles from "./Navbar.module.css";
 
 const Navbar = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to="/" className="navbar-brand">Design Todo Aplikacija</Link>
-            <ul className="navbar-nav">
+        <>
+
+       <nav className="navbar  navbar-expand fixed-bottom navbar-dark bg-dark justify-content-center">
+            {/* <Link to="/" className="navbar-brand">Design Todo Aplikacija</Link> */}
+
+
+
+            <ul className="navbar-nav nav-pills nav-fill">
                 <li className="nav-item">
                     <NavLink to="/" exact activeClassName={styles.active} className="nav-link">Home</NavLink>
                 </li>
@@ -20,11 +25,13 @@ const Navbar = () => {
                     <NavLink to="/newtodo" activeClassName={styles.active} className="nav-link">Novi zadatak</NavLink>
                 </li>
 
-                <li className="nav-item">
+                {/* <li className="nav-item">
                     <NavLink to="/about" activeClassName={styles.active} className="nav-link">O aplikaciji</NavLink>
-                </li>
+                </li> */}
             </ul>
+            
         </nav>
+        </>
     );
 }
 

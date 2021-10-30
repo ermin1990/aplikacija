@@ -1,11 +1,12 @@
 import React, {useState} from "react";
 import {withRouter} from "react-router-dom";
+import "./NewTodo.css";
 
 function Newtodo ({ dizajneri,history,addNewTodoToState }) {
 
   
   const [newTodo, setNewTodo] = useState({
-    id: Date.now(),
+    
     naslovAkcije: "",
     datumSlanja: "",
     datumPregledaAkcije: "",
@@ -34,16 +35,19 @@ function Newtodo ({ dizajneri,history,addNewTodoToState }) {
       history.push("/todos")
       console.log(newTodo);
     }
+
+    
+    
   }
 
   return (
-    <div className="container">
+    <>
+    <div className="container" id="odvojiDno">
         <div className="row">
             <div className="col-10 offset-1">
                 <h2 className="display-4 m-4">Dodaj novi zadatak</h2>
                 <div className="row">
                     <div className="col-10 offset-1">
-                        ID: <input type="number" disabled value={Date.now()}></input>
                         <input required type="text" onChange={e=>{setNewTodo({...newTodo,naslovAkcije:e.target.value})}} placeholder="Naziv akcije" className="form-control"/><br/>
                         <label>Kada je akcija pregledana</label>
                         <input required="required" type="date" onChange={e=>{setNewTodo({...newTodo,datumPregledaAkcije:e.target.value})}} placeholder="Datum pregleda akcije" className="form-control"/><br/>
@@ -61,13 +65,14 @@ function Newtodo ({ dizajneri,history,addNewTodoToState }) {
                         <option defaultChecked>Odaberite jednog ili više dizajnera</option>
                         {sviDizajneri}
                         </select><br />
-                        <button onClick={addNewTodo}>Dodaj zadatak</button>
+                        <button className="btn btn-primary" onClick={addNewTodo}>Dodaj zadatak</button>
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </>
   )
 };
 
