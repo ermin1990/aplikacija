@@ -86,10 +86,11 @@ function App() {
     if(!done){
       check = {zavrseno: true}
       await updateDoc(todoDoc, check)
+      
     } else {check = {zavrseno: false}
     await updateDoc(todoDoc, check)
   }
-    window.location.reload('/todos')
+  window.location.reload('/')
   }
 
   return (

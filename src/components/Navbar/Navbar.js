@@ -7,7 +7,7 @@ const Navbar = () => {
     return (
         <>
 
-       <nav className="navbar  navbar-expand fixed-bottom navbar-dark bg-dark justify-content-center">
+       <nav className="navbar  navbar-expand navbar-dark bg-dark justify-content-center sticky-top">
             {/* <Link to="/" className="navbar-brand">Design Todo Aplikacija</Link> */}
 
 
